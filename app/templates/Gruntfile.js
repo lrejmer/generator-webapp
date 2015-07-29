@@ -71,14 +71,17 @@ module.exports = function (grunt) {
         background: true
       },
       livereload: {
-        options: {
-          files: [
+        files: {
+          src: [
             '<%%= config.app %>/{,*/}*.html',
             '.tmp/styles/{,*/}*.css',
             '<%%= config.app %>/images/{,*/}*',<% if (useBabel) { %>
             '.tmp/scripts/{,*/}*.js'<% } else { %>
             '<%%= config.app %>/scripts/{,*/}*.js'<% } %>
-          ],
+          ]
+        },
+        options: {
+          watchTask: true,
           port: 9000,
           server: {
             baseDir: ['.tmp', config.app],
